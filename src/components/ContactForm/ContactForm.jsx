@@ -3,6 +3,7 @@ import { ContainerForma, Label } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAllContacts } from 'redux/selectors';
 import { addNewContactThunk } from 'redux/thunk';
+import { toast } from 'react-toastify';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -32,7 +33,7 @@ const ContactForm = () => {
       return elem.name.toLowerCase() === data.name.toLowerCase();
     });
     if (isDuplicate) {
-      alert(`${data.name} is alredy in contacts!`);
+      toast(`${data.name} is alredy in contacts!`);
       return true;
     }
   };
