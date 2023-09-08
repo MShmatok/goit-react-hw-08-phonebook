@@ -4,6 +4,7 @@ import { handleFulfilled, handlePending, handleRejected, handlerAddNewContact, h
 const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
+    isLoggedUser: false,
     contacts: {
         items: [],
         isLoading: false,

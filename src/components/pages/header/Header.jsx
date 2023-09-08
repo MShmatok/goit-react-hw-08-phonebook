@@ -3,9 +3,11 @@ import { HeaderStyled, Wrapper } from './HeaderStyled.styled';
 import Navigation from '../navigation/Navigation';
 import UserMenu from '../userMenu/UserMenu';
 import LoginMenu from '../loginMenu/LoginMenu';
+import { useSelector } from 'react-redux';
+import { selectIsLoading } from 'redux/selectors';
 
 const Header = () => {
-  const isLoggedUser = false;
+  const isLoggedUser = useSelector(selectIsLoading);
   return (
     <HeaderStyled>
       <Wrapper>

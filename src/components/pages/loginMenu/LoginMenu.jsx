@@ -1,6 +1,6 @@
 import React from 'react';
 import { BiSolidUserPlus } from 'react-icons/bi';
-import { IoExitOutline } from 'react-icons/io5';
+import { IoLogIn } from 'react-icons/io5';
 
 import { RegistrationWrapper } from '../registration/Registration.styled';
 import { LinkStyled } from '../header/HeaderStyled.styled';
@@ -12,8 +12,8 @@ const LoginMenu = () => {
         <BiSolidUserPlus />
         <span>Sing Up</span>
       </LinkStyled>
-      <LinkStyled to='/login'>
-        <IoExitOutline />
+      <LinkStyled to="/login">
+        <IoLogIn />
         <span>Sing In</span>
       </LinkStyled>
     </RegistrationWrapper>
