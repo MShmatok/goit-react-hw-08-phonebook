@@ -4,15 +4,16 @@ import Navigation from '../navigation/Navigation';
 import UserMenu from '../userMenu/UserMenu';
 import LoginMenu from '../loginMenu/LoginMenu';
 import { useSelector } from 'react-redux';
-import { selectIsLoading } from 'redux/selectors';
+
+import { selectorIsAuth } from 'redux/auth/selectors';
 
 const Header = () => {
-  const isLoggedUser = useSelector(selectIsLoading);
+  const isAuth = useSelector(selectorIsAuth);
   return (
     <HeaderStyled>
       <Wrapper>
         <Navigation />
-        {isLoggedUser ? <UserMenu /> : <LoginMenu />}
+        {isAuth ? <UserMenu /> : <LoginMenu />}
       </Wrapper>
     </HeaderStyled>
   );

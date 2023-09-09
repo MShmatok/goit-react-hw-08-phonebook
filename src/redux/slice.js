@@ -14,7 +14,7 @@ const initialState = {
 };
 
 const contactSlice = createSlice({
-    name: 'contact',
+    name: 'contacts',
     initialState,
 
     extraReducers: (builder) => {
@@ -39,5 +39,5 @@ const contactSlice = createSlice({
     }
 })
 
-export const reducer = contactSlice.reducer;
+export const reducerContacts = contactSlice.reducer;
 export const { setFilter, deleteContact, setContacts } = contactSlice.actions;

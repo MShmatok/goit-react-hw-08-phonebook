@@ -6,6 +6,7 @@ import {
   SectionStyled,
   WrapperPagePartStyled,
 } from '../commonStyled/SectionStyled.styled';
+import { addNewContactThunk } from 'redux/thunk';
 
 const Contacts = () => {
   return (
@@ -13,7 +14,11 @@ const Contacts = () => {
       <WrapperPagePartStyled>
         {' '}
         <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 4fr)' }}>
-          <ContactForm />
+          <ContactForm
+            onSubmitThunk={addNewContactThunk}
+            mainTitle={'Add new contact'}
+            btbTitle={'Add new contact'}
+          />
           <ContactList />
         </Box>
       </WrapperPagePartStyled>

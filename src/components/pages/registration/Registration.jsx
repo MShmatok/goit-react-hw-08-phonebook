@@ -11,10 +11,14 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { LinkToStyled } from '../commonStyled/SectionStyled.styled';
+import ModalChangeContact from '../modalChange/ModalChangeContact';
+import { useDispatch } from 'react-redux';
+import { signUpThunk } from 'redux/auth/thunk';
 
 const defaultTheme = createTheme();
 
 const Registration = () => {
+  const dispatch = useDispatch();
   const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -23,6 +27,14 @@ const Registration = () => {
       password: data.get('password'),
       name: data.get('name'),
     });
+
+    const dataUserReg = {
+      email: data.get('email'),
+      password: data.get('password'),
+      name: data.get('name'),
+    };
+
+    dispatch(signUpThunk(dataUserReg));
   };
 
   return (
@@ -38,6 +50,7 @@ const Registration = () => {
           }}
         >
           <FaRegCircleUser size={40} />
+
           <Typography component="h1" variant="h4">
             Sign up
           </Typography>

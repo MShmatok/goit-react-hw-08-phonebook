@@ -20,9 +20,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const defaultTheme = createTheme();
 
-const ContactForm = () => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+const ContactForm = ({ onSubmitThunk, mainTitle, btbTitle }) => {
+  const dataUser = { name: 'Petro', phone: '04654646' };
+  const [name, setName] = useState(dataUser.name ?? '');
+  const [phone, setPhone] = useState(dataUser.phone ?? '');
 
   const items = useSelector(selectAllContacts);
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const ContactForm = () => {
       return;
     }
     console.log(1111);
-    dispatch(addNewContactThunk({ name, phone }));
+    dispatch(onSubmitThunk({ name, phone }));
     setName('');
     setPhone('');
   };
@@ -78,7 +79,7 @@ const ContactForm = () => {
       <Container component="main" maxWidth="xs">
         <Box
           sx={{
-            marginTop: 5,
+            marginTop: 2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -86,7 +87,7 @@ const ContactForm = () => {
         >
           <FaRegCircleUser size={40} />
           <Typography component="h1" variant="h4">
-            Add new contact
+            {mainTitle}
           </Typography>
           <Box component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -123,7 +124,7 @@ const ContactForm = () => {
               sx={{ mt: 3, mb: 2 }}
               onSubmit={onSubmit}
             >
-              Add new contact
+              {btbTitle}
             </Button>
           </Box>
         </Box>
