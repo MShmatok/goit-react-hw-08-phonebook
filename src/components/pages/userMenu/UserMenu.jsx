@@ -3,14 +3,22 @@ import { Button, WrapperUserMenu } from './UserMenu.styled';
 import { LinkStyled } from '../header/HeaderStyled.styled';
 import { IoExitOutline } from 'react-icons/io5';
 import { FaRegUser } from 'react-icons/fa6';
+import { useDispatch, useSelector } from 'react-redux';
+import { logOutThunk } from 'redux/auth/thunk';
+import { selectorName } from 'redux/auth/selectors';
 
 const UserMenu = () => {
-  const userName = 'Jon Bober';
+  const userName = useSelector(selectorName);
+  const dispatch = useDispatch();
   return (
     <WrapperUserMenu>
       <FaRegUser />
-      <span>{`Welcome, ${userName}`}</span>
-      <Button to="/">
+      <span>{`Welcome, ${userName?.name ?? ''}`}</span>
+      <Button
+        onClick={() => {
+          dispatch(logOutThunk());
+        }}
+      >
         <IoExitOutline />
         <span>Log Out</span>
       </Button>

@@ -1,14 +1,20 @@
 import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import {
   SectionStyled,
   WrapperPagePartStyled,
 } from '../commonStyled/SectionStyled.styled';
-import { addNewContactThunk } from 'redux/thunk';
+import { addNewContactThunk, getAllthunk } from 'redux/contact/thunk';
+import { useDispatch } from 'react-redux';
 
 const Contacts = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllthunk());
+  }, [dispatch]);
   return (
     <SectionStyled>
       <WrapperPagePartStyled>

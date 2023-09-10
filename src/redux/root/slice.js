@@ -3,6 +3,7 @@ const { createSlice } = require("@reduxjs/toolkit")
 const handlePending = (state) => {
     state.isLoading = true;
     state.error = '';
+
 }
 const handleRejected = (state, { error }) => {
     state.isLoading = false;
@@ -15,12 +16,15 @@ const handleFulfilled = (state) => {
 
 const initialState = {
     isLoading: false,
-    error: ''
+    error: '',
+    isOpenModal: false,
 }
 
 const rootSlice = createSlice({
     name: 'root',
     initialState,
+
+
     extraReducers: (builder) => {
         builder.addMatcher((action) => action.type.endsWith('/pending'),
             handlePending)

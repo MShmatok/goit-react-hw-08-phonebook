@@ -4,7 +4,7 @@ import Filter from './Filter/Filter';
 import { Container, SubTitle } from './App.styled';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllthunk } from 'redux/thunk';
+import { getAllthunk } from 'redux/contact/thunk';
 import ContainerTitle from './ContainerTitle/ConteinerTitle';
 import { ToastContainer } from 'react-toastify';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -17,12 +17,14 @@ import { GlobalStyle } from './GlobalStyled';
 import ModalChangeContact from './pages/modalChange/ModalChangeContact';
 import PublicRoute from 'guards/PublicRoute';
 import PrivateRoute from 'guards/PrivateRoute';
+import { refreshUser } from 'api/auth';
+import { refreshUserThunk } from 'redux/auth/thunk';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllthunk());
+    dispatch(refreshUserThunk());
   }, [dispatch]);
 
   return (

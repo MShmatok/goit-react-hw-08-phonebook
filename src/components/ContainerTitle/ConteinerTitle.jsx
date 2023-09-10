@@ -2,7 +2,7 @@ import { Title } from 'components/App.styled';
 import Loader from 'components/Loader/Loader';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectorIsLoading } from 'redux/selectors';
+import { selectorIsLoading } from 'redux/contact/selectors';
 import { WraperTitle } from './ContainerTitle.styled';
 
 const ContainerTitle = ({ children }) => {

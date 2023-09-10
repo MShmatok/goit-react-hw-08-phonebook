@@ -1,13 +1,14 @@
 import ContactItem from 'components/ContactItem/ContactItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectorFilteredContacts } from 'redux/selectors';
-import { deleteContactThunk } from 'redux/thunk';
+import { selectorFilteredContacts } from 'redux/contact/selectors';
+import { deleteContactThunk, updateContactThunk } from 'redux/contact/thunk';
 
 import * as React from 'react';
 
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import Filter from 'components/Filter/Filter';
+import { openChangeModal } from 'redux/contact/slice';
 
 const ContactList = () => {
   const filteredContacts = useSelector(selectorFilteredContacts);
@@ -16,8 +17,8 @@ const ContactList = () => {
   const handleDelete = id => {
     dispatch(deleteContactThunk(id));
   };
-  const handlerOnChange = () => {
-    console.log('click');
+  const openModal = data => {
+    dispatch(openChangeModal(data));
   };
 
   return (
@@ -31,7 +32,7 @@ const ContactList = () => {
           key={item.id}
           contact={item}
           onDelete={() => handleDelete(item.id)}
-          onChange={() => handlerOnChange(item.id)}
+          openChangeModal={() => openModal(item)}
         />
       ))}
     </Box>

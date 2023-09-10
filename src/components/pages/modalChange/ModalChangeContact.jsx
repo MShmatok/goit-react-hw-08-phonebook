@@ -4,6 +4,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import ContactForm from 'components/ContactForm/ContactForm';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { closeModal } from 'redux/contact/slice';
+import {
+  selectorDataForModal,
+  selectorIsOpenModal,
+} from 'redux/contact/selectors';
 
 const style = {
   position: 'absolute',
@@ -18,14 +25,16 @@ const style = {
 };
 
 const ModalChangeContact = () => {
-  const [open, setOpen] = React.useState(true);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const dispatch = useDispatch();
+  const data = useSelector(selectorDataForModal);
+  const handleClose = () => dispatch(closeModal());
+
+  console.log(data);
 
   return (
     <div>
       <Modal
-        open={open}
+        open={useSelector(selectorIsOpenModal)}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

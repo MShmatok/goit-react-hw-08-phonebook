@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
   maxWidth: 450,
 }));
 
-const ContactItem = ({ contact, onDelete, onChange }) => {
+const ContactItem = ({ contact, onDelete, openChangeModal }) => {
   return (
     <Item
       sx={{
@@ -50,7 +50,7 @@ const ContactItem = ({ contact, onDelete, onChange }) => {
             <DeleteIcon />
           </IconButton>
           <IconButton
-            onClick={onChange}
+            onClick={openChangeModal}
             aria-label="change"
             color="success"
             size="large"
@@ -68,7 +68,7 @@ export default ContactItem;
 ContactItem.propTypes = {
   contact: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
   }).isRequired,
   onDelete: PropTypes.func.isRequired,
 };

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ContainerForma, Label } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAllContacts } from 'redux/selectors';
-import { addNewContactThunk } from 'redux/thunk';
+import { selectAllContacts } from 'redux/contact/selectors';
+import { addNewContactThunk } from 'redux/contact/thunk';
 import { toast } from 'react-toastify';
 
 import { FaRegCircleUser } from 'react-icons/fa6';
@@ -21,9 +21,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const defaultTheme = createTheme();
 
 const ContactForm = ({ onSubmitThunk, mainTitle, btbTitle }) => {
-  const dataUser = { name: 'Petro', phone: '04654646' };
+  const dataUser = { name: 'Petro', number: '04654646' };
   const [name, setName] = useState(dataUser.name ?? '');
-  const [phone, setPhone] = useState(dataUser.phone ?? '');
+  const [number, setNumber] = useState(dataUser.number ?? '');
 
   const items = useSelector(selectAllContacts);
   const dispatch = useDispatch();
@@ -35,8 +35,8 @@ const ContactForm = ({ onSubmitThunk, mainTitle, btbTitle }) => {
         setName(value);
         break;
 
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
 
       default:
@@ -56,13 +56,13 @@ const ContactForm = ({ onSubmitThunk, mainTitle, btbTitle }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if (isDuplicate({ name, phone })) {
+    if (isDuplicate({ name, number })) {
       return;
     }
     console.log(1111);
-    dispatch(onSubmitThunk({ name, phone }));
+    dispatch(onSubmitThunk({ name, number }));
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   const handleSubmit = event => {
@@ -108,11 +108,11 @@ const ContactForm = ({ onSubmitThunk, mainTitle, btbTitle }) => {
                 <TextField
                   required
                   fullWidth
-                  name="phone"
+                  name="number"
                   label="Telephone number"
                   type="tel"
                   id="tel"
-                  value={phone}
+                  value={number}
                   onChange={onChange}
                 />
               </Grid>
@@ -130,36 +130,6 @@ const ContactForm = ({ onSubmitThunk, mainTitle, btbTitle }) => {
         </Box>
       </Container>
     </ThemeProvider>
-
-    // <ContainerForma onSubmit={onSubmit}>
-    //   <Label htmlFor="">
-    //     Name
-    //     <input
-    //       type="text"
-    //       name="name"
-    //       pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-    //       title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    //       required
-    //       value={name}
-    //       onChange={onChange}
-    //     />
-    //   </Label>
-    //   <Label htmlFor="">
-    //     Phone
-    //     <input
-    //       type="tel"
-    //       name="phone"
-    //       pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-    //       title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-    //       required
-    //       value={phone}
-    //       onChange={onChange}
-    //     />
-    //   </Label>
-    //   <button type="submit" onSubmit={onSubmit}>
-    //     Add contact
-    //   </button>
-    // </ContainerForma>
   );
 };
 

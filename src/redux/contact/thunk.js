@@ -1,10 +1,9 @@
 import { notifyAdd, notifyDelete } from "components/Toastify/toastify";
 
 const { createAsyncThunk } = require("@reduxjs/toolkit")
-const { getAllToDo, addContact, deleteContact } = require("api/todoApi")
+const { getAllToDo, addContact, deleteContact, updateContact } = require("api/contacts")
 
 export const getAllthunk = createAsyncThunk('contact/getAll', async (_, { rejectWithValue }) => {
-
     try {
         const result = await getAllToDo();
         return result;
@@ -28,6 +27,17 @@ export const deleteContactThunk = createAsyncThunk('contact/deleteContact', asyn
         await deleteContact(id);
         notifyDelete();
         return id;
+    } catch (e) {
+        return rejectWithValue(e.massage);
+    }
+})
+
+export const updateContactThunk = createAsyncThunk('contact/updateContact', async (data, { rejectWithValue }) => {
+    try {
+        const updateResult = await updateContact(data);
+        console.log(data);
+        console.log(updateResult);
+        return data;
     } catch (e) {
         return rejectWithValue(e.massage);
     }

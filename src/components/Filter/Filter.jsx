@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from 'redux/slice';
+import { setFilter } from 'redux/contact/slice';
 
 import React, { useState } from 'react';
 
-import { selectAllContacts } from 'redux/selectors';
-import { addNewContactThunk } from 'redux/thunk';
+import { selectAllContacts } from 'redux/contact/selectors';
+import { addNewContactThunk } from 'redux/contact/thunk';
 import { toast } from 'react-toastify';
 
 import { FaRegCircleUser } from 'react-icons/fa6';
@@ -23,7 +23,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const defaultTheme = createTheme();
 
 const Filter = () => {
-  const filter = useSelector(state => state.filter);
+  const filter = useSelector(state => state.contact.filter);
   const dispatch = useDispatch();
 
   const setFilters = e => {
