@@ -13,6 +13,7 @@ import PublicRoute from 'guards/PublicRoute';
 import PrivateRoute from 'guards/PrivateRoute';
 
 import { refreshUserThunk } from 'redux/auth/thunk';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,18 @@ const App = () => {
         </Route>
       </Routes>
       <ModalChangeContact />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 };

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { selectorIsLoading } from 'redux/contact/selectors';
 import { WraperTitle } from './ContainerTitle.styled';
 
-const ContainerTitle = ({ children }) => {
+const ContainerTitle = () => {
   const isLoading = useSelector(selectorIsLoading);
   return (
     <WraperTitle>

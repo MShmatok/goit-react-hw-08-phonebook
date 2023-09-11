@@ -25,9 +25,6 @@ const contactSlice = createSlice({
     },
     reducers: {
         setFilter: (state, { payload }) => { state.filter = payload },
-
-        // deleteContact: (state, { payload }) => { state.contacts.items = state.contacts.items.filter((el) => el.id !== payload) },
-
         closeModal(state) { state.dataForUpdate = '' },
         openChangeModal(state, { payload }) {
             state.dataForUpdate = payload;

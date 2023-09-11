@@ -1,16 +1,12 @@
 import PropTypes from 'prop-types';
-
 import * as React from 'react';
-
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 import { DriveFileRenameOutline } from '@mui/icons-material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -69,4 +65,5 @@ ContactItem.propTypes = {
     number: PropTypes.string.isRequired,
   }).isRequired,
   onDelete: PropTypes.func.isRequired,
+  openChangeModal: PropTypes.func.isRequired,
 };
