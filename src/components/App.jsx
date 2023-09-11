@@ -1,12 +1,6 @@
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
-import { Container, SubTitle } from './App.styled';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllthunk } from 'redux/contact/thunk';
-import ContainerTitle from './ContainerTitle/ConteinerTitle';
-import { ToastContainer } from 'react-toastify';
+
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './layout/Layout';
 import Home from './pages/home/Home';
@@ -17,7 +11,7 @@ import { GlobalStyle } from './GlobalStyled';
 import ModalChangeContact from './pages/modalChange/ModalChangeContact';
 import PublicRoute from 'guards/PublicRoute';
 import PrivateRoute from 'guards/PrivateRoute';
-import { refreshUser } from 'api/auth';
+
 import { refreshUserThunk } from 'redux/auth/thunk';
 
 const App = () => {
@@ -62,25 +56,6 @@ const App = () => {
       </Routes>
       <ModalChangeContact />
     </>
-    // <Container>
-    //   <ContainerTitle />
-    //   <ContactForm />
-    //   <SubTitle>Contacts</SubTitle>
-    //   <Filter />
-    //   <ContactList />
-    //   <ToastContainer
-    //     position="top-center"
-    //     autoClose={3000}
-    //     hideProgressBar={false}
-    //     newestOnTop={false}
-    //     closeOnClick
-    //     rtl={false}
-    //     pauseOnFocusLoss
-    //     draggable
-    //     pauseOnHover
-    //     theme="light"
-    //   />
-    // </Container>
   );
 };
 
