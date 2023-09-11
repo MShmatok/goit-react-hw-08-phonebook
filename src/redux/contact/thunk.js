@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const { createAsyncThunk } = require("@reduxjs/toolkit")
 const { getAllToDo, addContact, deleteContact, updateContact } = require("api/contacts")
