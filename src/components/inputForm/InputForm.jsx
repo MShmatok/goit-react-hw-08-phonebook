@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaRegCircleUser } from 'react-icons/fa6';
-
+import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
@@ -101,3 +101,9 @@ const InpurForm = ({
 };
 
 export default InpurForm;
+
+InpurForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  mainTitle: PropTypes.string.isRequired,
+  btbTitle: PropTypes.string.isRequired,
+};
