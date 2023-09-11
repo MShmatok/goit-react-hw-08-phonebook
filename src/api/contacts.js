@@ -1,10 +1,7 @@
-
 import { instance } from './auth'
-
 
 export const getAllToDo = async () => {
     const { data } = await instance('/contacts')
-    console.log(data);
     return data
 }
 
@@ -13,7 +10,6 @@ export const addContact = async (data) => {
         name: data.name,
         number: data.number,
     })
-    console.log(response);
     return response.data;
 }
 
@@ -22,5 +18,6 @@ export const deleteContact = async (id) => {
 }
 
 export const updateContact = async ({ id, name, number }) => {
-    await instance.patch(`/contacts/${id}`, { name, number });
+    const { data } = await instance.patch(`/contacts/${id}`, { name, number });
+    return data;
 }

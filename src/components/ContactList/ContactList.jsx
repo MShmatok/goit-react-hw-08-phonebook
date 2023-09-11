@@ -1,7 +1,7 @@
 import ContactItem from 'components/ContactItem/ContactItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectorFilteredContacts } from 'redux/contact/selectors';
-import { deleteContactThunk, updateContactThunk } from 'redux/contact/thunk';
+import { deleteContactThunk } from 'redux/contact/thunk';
 
 import * as React from 'react';
 
@@ -37,18 +37,6 @@ const ContactList = () => {
       ))}
     </Box>
   );
-
-  // return (
-  //   <ul>
-  //     {filteredContacts.map(item => (
-  //       <ContactItem
-  //         key={item.id}
-  //         contact={item}
-  //         onDelete={() => handleDelete(item.id)}
-  //       />
-  //     ))}
-  //   </ul>
-  // );
 };
 
 export default ContactList;

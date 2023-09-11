@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 
-import { ContainerItem } from './ContactItem.styled';
-
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
+
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
@@ -12,7 +10,7 @@ import Typography from '@mui/material/Typography';
 
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+
 import { DriveFileRenameOutline } from '@mui/icons-material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -42,7 +40,7 @@ const ContactItem = ({ contact, onDelete, openChangeModal }) => {
         <Box sx={{ justifyContent: 'flex-start', flexDirection: 'row' }}>
           {/* <Avatar>W</Avatar> */}
           <Typography noWrap>
-            {contact.name}: {contact.phone}
+            {contact.name}: {contact.number}
           </Typography>
         </Box>
         <Box>

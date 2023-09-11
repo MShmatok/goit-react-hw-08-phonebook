@@ -11,6 +11,8 @@ import {
   selectorDataForModal,
   selectorIsOpenModal,
 } from 'redux/contact/selectors';
+import InpurForm from 'components/inputForm/InputForm';
+import { updateContactThunk } from 'redux/contact/thunk';
 
 const style = {
   position: 'absolute',
@@ -29,21 +31,24 @@ const ModalChangeContact = () => {
   const data = useSelector(selectorDataForModal);
   const handleClose = () => dispatch(closeModal());
 
-  console.log(data);
-
+  const onSubmitModal = (name, number, id) => {
+    dispatch(updateContactThunk({ name, number, id }));
+    handleClose();
+  };
   return (
     <div>
       <Modal
-        open={useSelector(selectorIsOpenModal)}
+        open={Boolean(useSelector(selectorIsOpenModal))}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <ContactForm
-            // onSubmitThunk={addNewContactThunk}
+          <InpurForm
+            onSubmit={onSubmitModal}
             mainTitle={'Change contact'}
             btbTitle={'Apply changes!'}
+            dataUser={data}
           />
         </Box>
       </Modal>

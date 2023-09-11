@@ -20,7 +20,6 @@ export const login = async (dataUser) => {
 export const logOut = async () => {
     await instance.post('/users/logout');
     deleteToken();
-
 }
 
 export const refreshUser = async () => {

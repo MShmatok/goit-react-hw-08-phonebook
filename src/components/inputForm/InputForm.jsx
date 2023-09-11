@@ -1,32 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaRegCircleUser } from 'react-icons/fa6';
 
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { LinkToStyled } from '../commonStyled/SectionStyled.styled';
-import { useDispatch } from 'react-redux';
-import { loginThunk } from 'redux/auth/thunk';
 
 const defaultTheme = createTheme();
 
-const Login = () => {
-  const dispatch = useDispatch();
-  const handleSubmit = event => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const dataLogin = {
-      email: data.get('email'),
-      password: data.get('password'),
-    };
-    dispatch(loginThunk(dataLogin));
+const InpurForm = ({
+  onSubmit,
+  mainTitle,
+  btbTitle,
+  dataUser = { name: '', number: '', id: '' },
+}) => {
+  const [name, setName] = useState(dataUser.name);
+  const [number, setNumber] = useState(dataUser.number);
+  const [id, setId] = useState(dataUser.id);
+
+  const onChange = e => {
+    const { name, value } = e.target;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+
+      case 'number':
+        setNumber(value);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const onSubmitForm = e => {
+    e.preventDefault();
+    onSubmit(name, number, id);
   };
 
   return (
@@ -34,7 +47,7 @@ const Login = () => {
       <Container component="main" maxWidth="xs">
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -42,30 +55,33 @@ const Login = () => {
         >
           <FaRegCircleUser size={40} />
           <Typography component="h1" variant="h4">
-            Sign In
+            {mainTitle}
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" onSubmit={onSubmitForm} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  type="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  id="name"
+                  type="text"
+                  label="Name"
+                  name="name"
+                  autoComplete="text"
+                  value={name}
+                  onChange={onChange}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  name="number"
+                  label="Telephone number"
+                  type="tel"
+                  id="tel"
+                  value={number}
+                  onChange={onChange}
                 />
               </Grid>
             </Grid>
@@ -75,15 +91,8 @@ const Login = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              {btbTitle}
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <LinkToStyled to="/registration" variant="body2">
-                  Don't have an account? Sign Up
-                </LinkToStyled>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
       </Container>
@@ -91,4 +100,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default InpurForm;

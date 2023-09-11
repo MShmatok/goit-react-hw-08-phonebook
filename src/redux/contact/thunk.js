@@ -34,10 +34,9 @@ export const deleteContactThunk = createAsyncThunk('contact/deleteContact', asyn
 
 export const updateContactThunk = createAsyncThunk('contact/updateContact', async (data, { rejectWithValue }) => {
     try {
-        const updateResult = await updateContact(data);
-        console.log(data);
-        console.log(updateResult);
-        return data;
+        const upData = await updateContact(data);
+
+        return upData;
     } catch (e) {
         return rejectWithValue(e.massage);
     }

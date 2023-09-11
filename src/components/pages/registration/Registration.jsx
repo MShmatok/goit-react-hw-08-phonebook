@@ -1,17 +1,13 @@
 import React from 'react';
 import { FaRegCircleUser } from 'react-icons/fa6';
-
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { LinkToStyled } from '../commonStyled/SectionStyled.styled';
-import ModalChangeContact from '../modalChange/ModalChangeContact';
 import { useDispatch } from 'react-redux';
 import { signUpThunk } from 'redux/auth/thunk';
 
@@ -22,12 +18,6 @@ const Registration = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-      name: data.get('name'),
-    });
-
     const dataUserReg = {
       email: data.get('email'),
       password: data.get('password'),

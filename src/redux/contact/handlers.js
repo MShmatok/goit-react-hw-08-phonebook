@@ -2,8 +2,8 @@ export const handlerAllProducts = (state, { payload }) => {
     state.contacts.items = payload;
 }
 
-export const handlerAddNewContact = (state, { payload: { name, id, phone } }) => {
-    state.contacts.items.push({ name, id, phone });
+export const handlerAddNewContact = (state, { payload: { name, id, number } }) => {
+    state.contacts.items.push({ name, id, number });
 }
 
 export const handlerDeleteContact = (state, { payload }) => {
