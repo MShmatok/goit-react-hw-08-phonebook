@@ -1,5 +1,5 @@
 import { addNewContactThunk, deleteContactThunk, getAllthunk, updateContactThunk } from "./thunk";
-import { handleFulfilled, handlePending, handleRejected, handlerAddNewContact, handlerAllProducts, handlerDeleteContact, updateContactContact } from "./handlers";
+import { handlerAddNewContact, handlerAllProducts, handlerDeleteContact, updateContactContact } from "./handlers";
 
 const { createSlice } = require("@reduxjs/toolkit");
 

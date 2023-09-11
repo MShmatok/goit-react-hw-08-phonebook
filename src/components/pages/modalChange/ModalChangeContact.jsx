@@ -1,9 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+
 import Modal from '@mui/material/Modal';
-import ContactForm from 'components/ContactForm/ContactForm';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import { closeModal } from 'redux/contact/slice';

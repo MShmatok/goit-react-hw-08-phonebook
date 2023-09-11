@@ -19,7 +19,7 @@ const InpurForm = ({
 }) => {
   const [name, setName] = useState(dataUser.name);
   const [number, setNumber] = useState(dataUser.number);
-  const [id, setId] = useState(dataUser.id);
+  const [id] = useState(dataUser.id);
 
   const onChange = e => {
     const { name, value } = e.target;

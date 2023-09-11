@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, WrapperUserMenu } from './UserMenu.styled';
-import { LinkStyled } from '../header/HeaderStyled.styled';
+
 import { IoExitOutline } from 'react-icons/io5';
 import { FaRegUser } from 'react-icons/fa6';
 import { useDispatch, useSelector } from 'react-redux';
