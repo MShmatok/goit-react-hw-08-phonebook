@@ -2,8 +2,8 @@ import React from 'react';
 import {
   SectionStyled,
   WrapperPagePartStyled,
-} from '../commonStyled/SectionStyled.styled';
-import { LinkStyled } from '../header/HeaderStyled.styled';
+} from '../../components/commonStyled/SectionStyled.styled';
+import { LinkStyled } from '../../components/header/HeaderStyled.styled';
 
 const Home = () => {
   return (

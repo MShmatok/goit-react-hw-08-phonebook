@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import {
   SectionStyled,
   WrapperPagePartStyled,
-} from '../commonStyled/SectionStyled.styled';
+} from '../../components/commonStyled/SectionStyled.styled';
 import { getAllthunk } from 'redux/contact/thunk';
 import { useDispatch } from 'react-redux';
 

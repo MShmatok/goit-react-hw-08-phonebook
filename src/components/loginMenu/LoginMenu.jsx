@@ -2,7 +2,7 @@ import React from 'react';
 import { BiSolidUserPlus } from 'react-icons/bi';
 import { IoLogIn } from 'react-icons/io5';
 
-import { RegistrationWrapper } from '../registration/Registration.styled';
+import { RegistrationWrapper } from '../../pages/registration/Registration.styled';
 import { LinkStyled } from '../header/HeaderStyled.styled';
 
 const LoginMenu = () => {

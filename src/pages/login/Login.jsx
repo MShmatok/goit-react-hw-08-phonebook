@@ -1,36 +1,37 @@
 import React from 'react';
 import { FaRegCircleUser } from 'react-icons/fa6';
+
 import Button from '@mui/material/Button';
+
 import TextField from '@mui/material/TextField';
+// import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { LinkToStyled } from '../commonStyled/SectionStyled.styled';
+import { LinkToStyled } from '../../components/commonStyled/SectionStyled.styled';
 import { useDispatch } from 'react-redux';
-import { signUpThunk } from 'redux/auth/thunk';
+import { loginThunk } from 'redux/auth/thunk';
 
 const defaultTheme = createTheme();
 
-const Registration = () => {
+const Login = () => {
   const dispatch = useDispatch();
   const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const dataUserReg = {
+    const dataLogin = {
       email: data.get('email'),
       password: data.get('password'),
-      name: data.get('name'),
     };
-
-    dispatch(signUpThunk(dataUserReg));
+    dispatch(loginThunk(dataLogin));
   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
-        {/* <CssBaseline /> */}
         <Box
           sx={{
             marginTop: 8,
@@ -40,24 +41,11 @@ const Registration = () => {
           }}
         >
           <FaRegCircleUser size={40} />
-
           <Typography component="h1" variant="h4">
-            Sign up
+            Sign In
           </Typography>
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  autoComplete="given-name"
-                  name="name"
-                  required
-                  fullWidth
-                  id="name"
-                  label="name"
-                  autoFocus
-                />
-              </Grid>
-
               <Grid item xs={12}>
                 <TextField
                   required
@@ -87,12 +75,12 @@ const Registration = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Sign In
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <LinkToStyled to="/login" variant="body2">
-                  Already have an account? Sign in
+                <LinkToStyled to="/registration" variant="body2">
+                  Don't have an account? Sign Up
                 </LinkToStyled>
               </Grid>
             </Grid>
@@ -103,4 +91,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Login;

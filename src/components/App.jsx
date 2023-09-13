@@ -1,28 +1,31 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './layout/Layout';
-import Home from './pages/home/Home';
-import Contacts from './pages/contact/Contact';
-import Registration from './pages/registration/Registration';
-import Login from './pages/login/Login';
+import Home from '../pages/home/Home';
+import Contacts from '../pages/contact/Contact';
+import Registration from '../pages/registration/Registration';
+import Login from '../pages/login/Login';
 import { GlobalStyle } from './GlobalStyled';
-import ModalChangeContact from './pages/modalChange/ModalChangeContact';
+import ModalChangeContact from '../pages/modalChange/ModalChangeContact';
 import PublicRoute from 'guards/PublicRoute';
 import PrivateRoute from 'guards/PrivateRoute';
 
 import { refreshUserThunk } from 'redux/auth/thunk';
 import { ToastContainer } from 'react-toastify';
+import { selectorIsRefreshing } from 'redux/auth/selectors';
 
 const App = () => {
   const dispatch = useDispatch();
-
+  const isRefreshin = useSelector(selectorIsRefreshing);
   useEffect(() => {
     dispatch(refreshUserThunk());
   }, [dispatch]);
 
-  return (
+  return isRefreshin ? (
+    <b>Refreshing user ...</b>
+  ) : (
     <>
       <GlobalStyle />
       <Routes>
